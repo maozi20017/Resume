@@ -27,3 +27,7 @@ li:before {
 	content: "•";
 	margin-right: 10px;
 }
+
+p{
+	font-size: 16px;
+}
