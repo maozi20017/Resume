@@ -31,3 +31,8 @@ li:before {
 p{
 	font-size: 16px;
 }
+
+img{
+	max-width: 900px;
+	max-height: 600px;
+}
