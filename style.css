@@ -1,7 +1,11 @@
 .container {
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 960px;
 	padding: 20px;
+}
+
+.image-caption {
+	text-align: center;
 }
 
 h1 {
@@ -21,6 +25,7 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	display: block;
 }
 
 li:before {
@@ -35,6 +40,9 @@ p {
 img {
 	max-width: 960px;
 	max-height: 540px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 a {
