@@ -8,7 +8,7 @@
 	text-align: center;
 }
 
-.page-break{
+.page-break {
 	page-break-before: always;
 }
 
@@ -41,14 +41,25 @@ p {
 	font-size: 16px;
 }
 
+a {
+	text-decoration: none;
+}
+
 img {
 	max-width: 384px;
-	max-height: 216px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-a {
-	text-decoration: none;
+.img_container {
+	display: flex;
+}
+
+.img_container .text {
+	width: 50%;
+}
+
+.img_container .image {
+	width: 50%;
 }

@@ -20,7 +20,7 @@
 		</ul>
 		<h2>專業技能</h2>
 		<ul>
-			<li>主要使用Golang，使用過C++、Python</li>
+			<li>主要使用Golang</li>
 			<li>使用gin、gorm等開發框架</li>
 			<li>使用HTML、CSS等網頁開發語言</li>
 		</ul>
@@ -43,20 +43,72 @@
 			<h3>
 				<li><a href="https://github.com/maozi20017/go_web_learning">go_web_learning</a></li>
 			</h3>
-			<p>依照網路上的教學寫出來後再修改而成的網頁。</p>
+			<p>依照教學寫出來後再修改而成的網頁。</p>
 			<p>一個簡單的註冊登入系統，用gin（網頁開發框架的package）處理連線的部分，有連接mysql並用gorm（物件關係對映處理的package），用來儲存註冊的帳號。</p>
 			<p>目前有3個身分組（一般使用者、版主、管理員），帳號資訊跟身分組放在不同table並用外鍵連接，在登入後會用session儲存帳號資訊，只有管理員才可使用後台管理功能。</p>
-			<p>目前後台管理只有顯示所有帳號資訊的功能。</p>
-			<img src="image/go_web_learning/1.webp" alt="專案架構" title="專案架構">
-			<p class="image-caption">有打算嘗試RESTful但失敗了，教學沒有完整解釋且教學的package已停止更新不再支援。</p>
+			<p>目前後台管理有顯示所有帳號資訊的功能。</p>
+			<div class="img_container">
+				<div class="text">
+					<p>config：設定檔
+						<br>model：存取儲存的帳號資訊型態
+						<br>static：html 和 css
+						<br>database.go：連接資料庫
+						<br>delivery.go：處理顯示介面
+						<br>repository.go：資料庫處理
+						<br>router.go：設定路由
+						<br>service.go：處裡網頁請求
+					</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/1.webp" alt="專案架構" title="專案架構">
+				</div>
+			</div>
+			<div class="img_container">
+				<div class="text">
+					<p>在 main 函數中，它首先呼叫 ConnectDB 函數來建立與資料庫的連接，並將返回的資料庫對象存儲在 db 變數中。<br>如果無法連接資料庫，則會輸出錯誤信息並終止程式的執行。</p>
+					<p>使用 defer 關鍵字延遲執行一個匿名函數，以確保在 main 函數結束時關閉資料庫連接。</p>
+					<p>通過 db.Preload("Identity").Where("identity_id = ?", 3).Find(&users) 來查詢使用者資料。使用 Preload 方法預先載入使用者的身份資訊（即 Identity）。查詢的結果將存儲在 users 切片中。</p>			
+					<p>使用一個迴圈遍歷 users 切片，並輸出每個使用者的名稱和身份描述。</p>
+					<p>呼叫 SetupRouter 函數創建一個 Gin 引擎的實例，並將資料庫對象作為參數傳遞。</p>					
+					<p>呼叫 server.Run(":8888") 啟動服務，監聽 8888 端口。</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/main_code.webp" alt="main.go" title="main.go">
+				</div>
+			</div>
+			<div class="img_container">
+				<div class="text">
+					<p>使用 viper 套件來解析 YAML 格式的設定檔。<br>設定檔的名稱設定為 config.yaml，並且預期在相對路徑 ./config 下。</p>
+					<p>使用 viper.Unmarshal 將設定檔的內容解析並映射到 config.Config 結構中，用於保存資料庫連接相關的配置訊息。</p>						
+					<p>根據設定檔，建立連接資料庫所需的 DSN 字串（資料庫連接字串），其中包含用戶名、密碼、網路類型、伺服器名稱、埠號和資料庫名稱等資訊。</p>			
+					<p>使用 gorm.Open 函數透過 mysql.Open 驅動程式連接到 MySQL 資料庫，並將返回的 gorm.DB 實例存儲在 db 變數中。<br>如果連接過程中出現錯誤，則返回錯誤信息。</p>						
+					<p>使用 db.AutoMigrate 自動建立 User 和 Identity 資料表。這個函數會檢查資料庫中是否存在這些資料表，如果不存在則創建。</p>						
+					<p>使用 db.FirstOrCreate 在 User 和 Identity 資料表中新增預設資料。<br>這個函數會檢查資料表中是否已經存在指定條件的資料，如果不存在則新增。</p>
+					<p>返回成功連接的 gorm.DB 實例和一個空的錯誤值（如果連接成功）。</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/database_code.webp" alt="database.go" title="database.go">
+				</div>
+			</div>
+			<div class="img_container">
+				<div class="text">
+					<p>Login 函數：驗證使用者名稱和密碼是否正確。<br>接收一個 gorm.DB 作為資料庫連接，並檢索使用者資訊進行驗證。</p>
+					<p>Register 函數：註冊新使用者並驗證使用者名稱和密碼是否正確。<br>接收一個 gorm.DB 作為資料庫連接，並檢查使用者名稱是否已存在，然後創建一個新的使用者。</p>
+					<p>ValidateForm 函數：驗證表單參數是否正確。<br>接收一個 gin.context 對象以獲取表單參數，並檢查使用者名稱和密碼是否存在並符合要求。</p>					
+					<p>RegisterAuth 函數：處理註冊請求。<br>調用 ValidateForm 函數檢驗表單參數的正確性，然後調用 Register 函數進行註冊，根據結果返回相應的 html 頁面。</p>				
+					<p>LoginAuth 函數：處理登入請求。<br>調用 ValidateForm 函數檢驗表單參數的正確性，然後調用 Login 函數進行登入驗證，根據結果返回相應的 html 頁面。</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/service_code.webp" alt="service.go" title="service.go">
+				</div>
+			</div>
 			<img src="image/go_web_learning/login.webp" alt="登入介面" title="登入介面">
 			<img src="image/go_web_learning/register.webp" alt="註冊介面" title="註冊介面">
-			<p class="image-caption">教學只有登入功能跟介面，註冊是改出來的。</p>
 			<img src="image/go_web_learning/index.webp" alt="首頁" title="首頁">
 			<p class="image-caption">歡迎的訊息會根據使用者登入的session有所變動。</p>
 			<img src="image/go_web_learning/userlist.webp" alt="顯示帳號資訊" title="顯示帳號資訊">
 			<p class="image-caption">後台管理的顯示帳號資訊功能。</p>
-			<img src="image/go_web_learning/identities.webp" alt="資料庫" title="資料庫">\
+			<img src="image/go_web_learning/identities.webp" alt="資料庫" title="資料庫">
 			<img src="image/go_web_learning/users.webp" alt="資料庫" title="資料庫">
 			<p class="image-caption">mysql資料庫。</p>
 			<h3>
@@ -88,21 +140,23 @@
 			<h3>
 				<li>創意和想法</li>
 			</h3>
-			<p>在畢業專題中，我負責專題的指導和關卡設計。這個經驗讓我能夠提供公司新的創意和想法。</p>
+			<p>畢業專題中，我負責專題的指導和關卡設計。這個經驗讓我能夠提供新的創意和想法，以豐富專案的內容。我將努力思考如何改進流程、提升效率或解決問題。</p>
 			<h3>
 				<li>專案開發協助</li>
 			</h3>
-			<p>通過在GitHub上傳項目，我對版本控制有了初步的認識。這使我能夠參與公司專案的開發並提供協助。</p>
+			<p>通過在GitHub上傳項目，我對版本控制有了初步的認識。這使我能夠更有效地參與公司專案的開發並提供實質協助。</p>
+			<p>我熟悉常用的程式語言和開發工具，具備程式語言能力和問題解決能力。我能夠協助團隊進行代碼編寫、調試和優化，確保專案的高效和順利交付。</p>
+			<p>除此之外，我能夠與團隊成員合作，解決開發過程中的問題並共同追求卓越。</p>
 		</ul>
 		<h2 class="page-break">其他項目</h2>
 		<ul>
 			<h3>
 				<li>以虛實整合技術探討原民文化響應學習研究</li>
 			</h3>
-			<p>以虛擬實境技術（VR）結合原住民的文化，應用在這個少數文化需要被重視以及保存的時代，把文化的保存數位化，能安全且完整留存完整物品，且能推動相關的教育。</p>
+			<p>以虛擬實境技術（VR）結合原住民的文化，應用在這個少數文化需要被重視以及保存的時代，把文化的保存數位化，能安全並完整留存完整物品，且能推動相關的教育。</p>
 			<p>運用VR的環境來設計，能以導覽及遊戲的方式來進行學習，進而推廣出部分少數民族的文化資產。</p>
 			<p>環境中能檢視或觀察族群相關的建築結構、圖騰，陶器等文物，同時做到數位留存及教育資源的提供。</p>
-			<p>分工：本人負責提供VR專案的建議與設計以及將VR專案裡的物件的進行3D列印。</p>
+			<p>分工：本人負責提供VR專案的建議與設計。</p>
 			<img src="image/thesis/1.webp" alt="執行畫面" title="執行畫面" class="page-break">
 			<p class="image-caption">以博物館的形式展示，物件可拿取以近距離觀看。</p>
 			<img src="image/thesis/2.webp" alt="執行畫面" title="執行畫面">
@@ -110,7 +164,7 @@
 			<h3>
 				<li><a href="https://steamcommunity.com/id/maozi20017/myworkshopfiles/">steam工作坊</a></li>
 			</h3>
-			<p>如圖所示，目前只有用xml寫別人模組的漢化包，主要做的是把各個翻譯者的漢化包做個統整。</p>
+			<p>如圖所示，目前有用xml寫模組的漢化包，主要做的是把各個翻譯者的漢化包做個統整。</p>
 			<img src="image/steam/1.webp">
 			<img src="image/steam/2.webp">
 			<img src="image/steam/3.webp">
