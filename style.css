@@ -54,6 +54,8 @@ img {
 
 .img_container {
 	display: flex;
+	justify-content: center;
+	max-width: 100%;
 }
 
 .img_container .text {
