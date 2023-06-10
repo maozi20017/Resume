@@ -65,19 +65,7 @@
 			</div>
 			<div class="img_container">
 				<div class="text">
-					<p>在 main 函數中，它首先呼叫 ConnectDB 函數來建立與資料庫的連接，並將返回的資料庫對象存儲在 db 變數中。<br>如果無法連接資料庫，則會輸出錯誤信息並終止程式的執行。</p>
-					<p>使用 defer 關鍵字延遲執行一個匿名函數，以確保在 main 函數結束時關閉資料庫連接。</p>
-					<p>通過 db.Preload("Identity").Where("identity_id = ?", 3).Find(&users) 來查詢使用者資料。使用 Preload 方法預先載入使用者的身份資訊（即 Identity）。查詢的結果將存儲在 users 切片中。</p>			
-					<p>使用一個迴圈遍歷 users 切片，並輸出每個使用者的名稱和身份描述。</p>
-					<p>呼叫 SetupRouter 函數創建一個 Gin 引擎的實例，並將資料庫對象作為參數傳遞。</p>					
-					<p>呼叫 server.Run(":8888") 啟動服務，監聽 8888 端口。</p>
-				</div>
-				<div class="image">
-					<img src="image/go_web_learning/main_code.webp" alt="main.go" title="main.go">
-				</div>
-			</div>
-			<div class="img_container">
-				<div class="text">
+					<h3>database.go</h3>
 					<p>使用 viper 套件來解析 YAML 格式的設定檔。<br>設定檔的名稱設定為 config.yaml，並且預期在相對路徑 ./config 下。</p>
 					<p>使用 viper.Unmarshal 將設定檔的內容解析並映射到 config.Config 結構中，用於保存資料庫連接相關的配置訊息。</p>						
 					<p>根據設定檔，建立連接資料庫所需的 DSN 字串（資料庫連接字串），其中包含用戶名、密碼、網路類型、伺服器名稱、埠號和資料庫名稱等資訊。</p>			
@@ -89,9 +77,37 @@
 				<div class="image">
 					<img src="image/go_web_learning/database_code.webp" alt="database.go" title="database.go">
 				</div>
+			</div>			
+			<div class="img_container">
+				<div class="text">
+					<h3>delivery.go</h3>
+					<p>LoginPage 函數：用於處理顯示登入頁面的請求。使用 c.HTML 方法渲染名為 "login.html" 的 HTML 的 HTML 並返回。</p>
+					<p>RegisterPage 函數：用於處理顯示註冊頁面的請求。<br>使用 c.HTML 方法渲染名為 "register.html" 的 HTML 並返回。	</p>					
+					<p>IndexPage 函數：用於處理顯示內容頁面的請求。從 session 中獲取使用者名稱和身份描述，然後使用 c.HTML 方法渲染名為 "index.html" 的 HTML 模板，並將使用者名稱和身份描述作為模板變數傳遞給模板。</p>					
+					<p>AdminPage 函數：用於處理顯示後台管理頁面的請求。<br>使用 c.HTML 方法渲染名為 "admin.html" 的 HTML 並返回。</p>
+					<p>UserListPage 函數：用於處理顯示 UserList 頁面的請求。<br>調用了一個名為 GetUserList 的函數，該函數使用傳遞的 gorm.DB 實例從資料庫中獲取使用者列表。<br>然後，使用 c.HTML 方法渲染名為 "userlist.html" 的 HTML 模板並將使用者列表作為模板變數傳遞給模板。</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/delivery_code.webp" alt="delivery.go" title="delivery.go">
+				</div>
+			</div>						
+			<div class="img_container">
+				<div class="text">
+					<h3>main.go</h3>
+					<p>首先呼叫 ConnectDB 函數來建立與資料庫的連接，並將返回的資料庫對象存儲在 db 變數中。<br>如果無法連接資料庫，則會輸出錯誤信息並終止程式的執行。</p>
+					<p>使用 defer 關鍵字延遲執行一個匿名函數，以確保在 main 函數結束時關閉資料庫連接。</p>
+					<p>通過 db.Preload("Identity").Where("identity_id = ?", 3).Find(&users) 來查詢管理者的資料。使用 Preload 方法預先載入使用者的身份資訊（即 Identity）。查詢的結果將存儲在 users 切片中。</p>			
+					<p>使用一個迴圈遍歷 users 切片，並輸出每個使用者的名稱和身份描述。</p>
+					<p>呼叫 SetupRouter 函數創建一個 Gin 引擎的實例，並將資料庫對象作為參數傳遞。</p>					
+					<p>呼叫 server.Run(":8888") 啟動服務，監聽 8888 端口。</p>
+				</div>
+				<div class="image">
+					<img src="image/go_web_learning/main_code.webp" alt="main.go" title="main.go">
+				</div>
 			</div>
 			<div class="img_container">
 				<div class="text">
+					<h3>service.go</h3>
 					<p>Login 函數：驗證使用者名稱和密碼是否正確。<br>接收一個 gorm.DB 作為資料庫連接，並檢索使用者資訊進行驗證。</p>
 					<p>Register 函數：註冊新使用者並驗證使用者名稱和密碼是否正確。<br>接收一個 gorm.DB 作為資料庫連接，並檢查使用者名稱是否已存在，然後創建一個新的使用者。</p>
 					<p>ValidateForm 函數：驗證表單參數是否正確。<br>接收一個 gin.context 對象以獲取表單參數，並檢查使用者名稱和密碼是否存在並符合要求。</p>					
