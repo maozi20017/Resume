@@ -151,36 +151,114 @@
 					<img src="image/go_web_learning/service_code.webp" alt="service.go" title="service.go">
 				</div>
 			</div>
-			<img src="image/go_web_learning/login.webp" alt="登入介面" title="登入介面">
-			<img src="image/go_web_learning/register.webp" alt="註冊介面" title="註冊介面">
-			<img src="image/go_web_learning/index.webp" alt="首頁" title="首頁">
+			<div class="img_container">
+				<div class="image">
+					<img src="image/go_web_learning/login.webp" alt="登入介面" title="登入介面">
+					<img src="image/go_web_learning/register.webp" alt="註冊介面" title="註冊介面">					
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="image">			
+					<img src="image/go_web_learning/index.webp" alt="首頁" title="首頁">	
+				</div>	
+			</div>
 			<p class="image-caption">訊息會根據 session 有所變動。</p>
-			<img src="image/go_web_learning/userlist.webp" alt="顯示帳號資訊" title="顯示帳號資訊">
-			<img src="image/go_web_learning/identities.webp" alt="資料庫" title="資料庫">
-			<img src="image/go_web_learning/users.webp" alt="資料庫" title="資料庫">
+			<div class="img_container">
+				<div class="image">
+					<img src="image/go_web_learning/identities.webp" alt="資料庫" title="資料庫">
+					<img src="image/go_web_learning/users.webp" alt="資料庫" title="資料庫">			
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="image">			
+					<img src="image/go_web_learning/userlist.webp" alt="顯示帳號資訊" title="顯示帳號資訊">
+				</div>	
+			</div>		  
 			<p class="image-caption">mysql資料庫。</p>
+
 			<h3>
 				<li class="page-break"><a href="https://github.com/maozi20017/map_ranger">map_ranger</a></li>
 			</h3>
 			<p>我玩的遊戲中有一個小地圖，遊戲中我需要測量我與敵人的距離，所以就寫了這個程式。</p>
-			<p>運作原理：先輸入當前地圖的比例尺，測量當前地圖一格的長度以算出一格長度是多少像素，然後在地圖起點（自己）和敵人的標記按下滑鼠中鍵測量出兩點距離多少像素，最後就可以得出距離。</p>
 			<p>但因為從設定初始長度到測量都是人工操作（用兩點鼠標計算距離），所以會有一定的誤差，距離不是十分準確。</p>
 			<p>原本打算用圖像辨識來讓測距自動化，但遊戲本身的設計會讓要辨識的物件閃爍導致辨識難度增加，因此還是以人工操作為主。</p>
-			<img src="image/map_ranger/1.webp" alt="專案架構" title="專案架構">
-			<img src="image/map_ranger/2.webp" alt="執行畫面" title="執行畫面">
+			<p>現在因為package版本問題主程式無法運作，但執行檔依舊可以使用。</p>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/map_ranger/1.webp" alt="專案架構" title="專案架構">				
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="text">
+					<h3>map_ranger.go</h3>
+					<p>主函數（main）：程式的進入點。<br>首先輸入比例尺，然後調用 firststep 函數來設定起點和終點之間的基準距離。<br>接著進入一個無窮迴圈，不斷調用 getrange 函數來獲取起點和終點之間的距離。</p>
+					<p>firststep 函數：用於設定起點和終點之間的基準距離。<br>按下滑鼠中鍵來設定起點位置，然後再次按下滑鼠中鍵來設定終點位置。<br>最後，計算並返回起點和終點之間的直線距離，作為基準距離。</p>
+					<p>getrange 函數：用於獲取起點和終點之間的距離。<br>按下滑鼠中鍵來設定起點位置，然後再次按下滑鼠中鍵來設定終點位置。<br>接著，根據基準距離和比例尺計算並顯示起點和終點之間的實際距離。</p>
+					<p>togetmousepos 函數：用於獲取滑鼠的座標位置。<br>使用 gohook 套件的 AddMouse 函數來監聽滑鼠事件，並使用 robotgo 套件的 GetMousePos 函數來獲取滑鼠的當前座標位置。<br>當滑鼠中鍵被按下時，它會返回滑鼠的 x 和 y 座標。</p>
+				</div>
+				<div class="image">
+					<img src="image/map_ranger/map_ranger_code.webp" alt="map_ranger.go" title="map_ranger.go">
+				</div>
+			</div>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/map_ranger/2.webp" alt="執行畫面" title="執行畫面">			
+				</div>	
+			</div>
 			<p class="image-caption">執行畫面。</p>
+
+			<h3>
+				<li class="page-break"><a href="https://github.com/maozi20017/file_tree_gen">file_tree_gen</a></li>
+			</h3>
+			<p>做報告時用來顯示整體專案結構的小程式，把執行檔移到需要的資料夾並執行。</p>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/file_gen_tree/file_tree_gen.webp" alt="專案架構" title="專案架構">				
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="text">
+					<h3>file_tree_gen.go</h3>
+					<p>主函數（main）：程式的進入點。<br>使用 os.Getwd 函數獲取當前的工作目錄路徑，並將其列印出來。<br>然後調用 printDirectoryStructure 函數來列印目錄結構。最後，使用 fmt.Scanln 函數讓程式暫停，等待使用者的輸入，以便程式執行不被立即結束。</p>
+					<p>printDirectoryStructure 函數：用於接收目錄路徑（dirPath）和縮排層級（indentLevel）作為參數。<br>使用 ioutil.ReadDir 函數讀取指定目錄下的檔案和子目錄的資訊。<br>然後，對於每個檔案和子目錄，根據縮排層級生成縮排字串，並使用 fmt.Println 函數將檔案名稱或子目錄名稱列印出來。<br>如果遇到子目錄，則遞迴調用 printDirectoryStructure 函數處理子目錄，並將縮排層級+1。<br>這樣可以達到以樹狀結構的形式列印目錄結構的效果。</p>
+				</div>
+				<div class="image">
+					<img src="image/file_gen_tree/file_tree_gen_code.webp" alt="file_tree_gen.go" title="file_tree_gen.go">
+				</div>
+			</div>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/file_gen_tree/2.webp" alt="執行畫面" title="執行畫面">			
+				</div>	
+			</div>
+			<p class="image-caption">執行畫面。</p>
+
 			<h3>
 				<li class="page-break"><a href="https://github.com/maozi20017/leetcode.cn-solution">leetcode.cn-solution</a></li>
 			</h3>
-			<p>刷leetcode留下的紀錄，有程式碼以及題目連結，目前88題。</p>
-			<img src="image/leetcode.cn-solution/1.webp" alt="專案架構" title="專案架構">
-			<img src="image/leetcode.cn-solution/2.webp" alt="專案架構" title="專案架構">
+			<p>刷leetcode留下的紀錄，有程式碼以及題目連結，目前89題。</p>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/leetcode.cn-solution/1.webp" alt="專案架構" title="專案架構">	
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/leetcode.cn-solution/2.webp" alt="專案架構" title="專案架構">
+				</div>	
+			</div>
+
 			<h3>
 				<li><a href="https://github.com/maozi20017/Resume">Resume</a></li>
 			</h3>
 			<p>個人履歷，也就是現在看到的這些，使用html和css完成，用github page發布。</p>
-			<img src="image/resume/1.webp" alt="專案架構" title="專案架構">
+			<div class="img_container">
+				<div class="image">
+					<img src="image/resume/1.webp" alt="專案架構" title="專案架構">
+				</div>	
+			</div>
 		</ul>
+
 		<h2 class="page-break">能夠做些甚麼</h2>
 		<ul>
 			<h3>
@@ -203,23 +281,43 @@
 			<p>運用VR的環境來設計，能以導覽及遊戲的方式來進行學習，進而推廣出部分少數民族的文化資產。</p>
 			<p>環境中能檢視或觀察族群相關的建築結構、圖騰，陶器等文物，同時做到數位留存及教育資源的提供。</p>
 			<p>分工：本人負責提供VR專案的建議與設計。</p>
-			<img src="image/thesis/1.webp" alt="執行畫面" title="執行畫面" class="page-break">
+			<div class="img_container">
+				<div class="image">
+					<img src="image/thesis/1.webp" alt="執行畫面" title="執行畫面" class="page-break">
+				</div>	
+			</div>
 			<p class="image-caption">以博物館的形式展示，物件可拿取以近距離觀看。</p>
-			<img src="image/thesis/2.webp" alt="執行畫面" title="執行畫面">
+			<div class="img_container">
+				<div class="image">
+					<img src="image/thesis/2.webp" alt="執行畫面" title="執行畫面">
+				</div>	
+			</div>
 			<p class="image-caption">組合石板屋場景。</p>
 			<h3>
 				<li><a href="https://steamcommunity.com/id/maozi20017/myworkshopfiles/">steam工作坊</a></li>
 			</h3>
-			<p>如圖所示，目前有用xml寫模組的漢化包，主要做的是把各個翻譯者的漢化包做個統整。</p>
-			<img src="image/steam/1.webp">
-			<img src="image/steam/2.webp">
-			<img src="image/steam/3.webp">
-			<img src="image/steam/4.webp">
+			<p>目前有用xml寫模組的漢化包，主要做的是把各個翻譯者的漢化包做個統整。</p>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/steam/1.webp">
+					<img src="image/steam/2.webp">
+				</div>	
+			</div>
+			<div class="img_container">
+				<div class="image">
+					<img src="image/steam/3.webp">
+					<img src="image/steam/4.webp">
+				</div>	
+			</div>
 		</ul>
 		<h2>附件</h2>
-		<img src="image/seminar/1.webp" alt="國立台東大學資訊工程學系112級畢業專題成果展" title="國立台東大學資訊工程學系112級畢業專題成果展">
-		<img src="image/seminar/2.webp" alt="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會"
-			title="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會">
+		<div class="img_container">
+			<div class="image">
+				<img src="image/seminar/1.webp" alt="國立台東大學資訊工程學系112級畢業專題成果展" title="國立台東大學資訊工程學系112級畢業專題成果展">
+				<img src="image/seminar/2.webp" alt="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會"
+					title="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會">
+			</div>	
+		</div>
 	</div>
 </body>
 
