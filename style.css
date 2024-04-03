@@ -8,10 +8,6 @@
 	text-align: center;
 }
 
-.page-break {
-	page-break-before: always;
-}
-
 h1 {
 	font-size: 36px;
 	text-align: center;
@@ -68,10 +64,3 @@ img {
 	flex-direction: row;
 	justify-content: center;
 }
-
-@media print {
-	.img_container .image {
-	  flex-direction: row;
-	}
-  }
-  
