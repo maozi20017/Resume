@@ -21,7 +21,7 @@
 }
 
 .content {
-    flex: 1;
+    flex: 0 0 80%;
     background-color: #e2e6be;
     padding: 15px;
 }
