@@ -1,181 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 
 <head>
-	<title>履歷</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後端工程師簡歷</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            min-width: 300px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .contact-info,
+        .skills,
+        .languages,
+        .education,
+        .experience,
+        .projects {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .skill-list,
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skill-item,
+        .language-item {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .project,
+        .job {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<header>
-		<h1>
-			<a href="#">
-				謝竣丞
-			</a>
-		</h1>
-	</header>
-	<div class="container">
-		<div class="sidebar">
-			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>目前也是先空著</li>
-			</ul>
-			</di>
-		</div>
-		<div class="content">
-			<section>
-				<h2>
-					聯繫方式
-				</h2>
-				<p>0966557768</p>
-				<p>
-					<a href="mailto:smallg20017@gmail.com">smallg20017@gmail.com</a>
-				</p>
-			</section>
-			<section>
-				<h2>
-					個人簡述
-				</h2>
-				<ul>
-					<li>男，彰化人，國立台東大學資訊工程系畢業（2023/6），2001年生，役畢（2023/10/26~2024/2/2）</li>
-					<li>主要方向：前後端軟體開發，前端學習bootstrap，Javascript，React，後端學習golang，laravel</li>
-					<li>工作意向：全端工程師或軟體工程師</li>
-				</ul>
-			</section>
-			<section>
-				<h2>
-					專業技能
-				</h2>
-				<ol>
-					<li>使用Godot gdscript做小遊戲</li>
-					<li>使用Golang做資料庫CROD，動態網頁，爬蟲程式</li>
-					<li>Golang使用gin、gorm等開發框架</li>
-					<li>基礎Javascript語法</li>
-					<li>基礎git操作版本控制</li>
-					<li>基礎HTML、CSS等網頁開發語言</li>
-					<li>基礎docker操作</li>
-				</ol>
-			</section>
-			<section>
-				<h2>
-					經歷
-				</h2>
-				<ul>
-					<li>IET ICETA2022工程技術與應用國際研討會</li>
-					<p>大學專題：Multicultural Knowledge and Information Literacy Learning Using AIoT Integration
-						Technology
-					</p>
-					<li>2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會</li>
-					<p>大學專題：以虛實整合技術探討原民文化響應學習研究</p>
-				</ul>
-			</section>
-			<section>
-				<h2>
-					實務經驗
-				</h2>
-				<ul>
-					<h3>
-						<li>
-							<a href="https://github.com/maozi20017/mysecondreactapp">mysecondreactapp</a>
-						</li>
-					</h3>
-					<p>學習react的專案。</p>
-					<figure>
-						<img src="image/mysecondreactapp/index.png" alt="首頁" title="首頁">
-					</figure>
-					<h3>
-						<li>
-							<a href="https://github.com/maozi20017/Maozi_godot_game_1">godot自製遊戲</a>
-						</li>
-					</h3>
-					<p><iframe width="560" height="315"
-							src="https://www.youtube.com/embed/KWr93-3FaZU?si=ZnWl1CXs_dF6uCmy"
-							title="YouTube video player" frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-					<p>用godot做的第一款遊戲，素材是<a href="https://0x72.itch.io/16x16-robot-tileset">itch</a>音樂是<a
-							href="https://pixabay.com/sound-effects/8-bit-loop-189494/">pixabay</a>。</p>
-					<p>2D解謎。</p>
-					<h3>
-						<li>
-							<a href="https://github.com/maozi20017/go_web_learning">go_web_learning</a>
-						</li>
-					</h3>
-					<p>依照教學寫出來後再修改而成的網頁，使用gin，gorm和mysql。</p>
-					<figure>
-						<img src="image/go_web_learning/index.webp" alt="首頁" title="首頁">
-						<img src="image/go_web_learning/identities.webp" alt="資料庫" title="資料庫">
-						<img src="image/go_web_learning/users.webp" alt="資料庫" title="資料庫">
-					</figure>
-					<h3>
-						<li>
-							<a href="https://github.com/maozi20017/leetcode.cn-solution">leetcode.cn-solution</a>
-						</li>
-					</h3>
-					<p>刷leetcode golang留下的紀錄。</p>
-					<img src="image/leetcode.cn-solution/1.webp" alt="專案架構" title="專案架構">
-					<h3>
-						<li>
-							<a href="https://github.com/maozi20017/Resume">Resume</a>
-						</li>
-					</h3>
-					<p>個人履歷，也就是現在看到的網頁，使用html和css完成，用github page發布。</p>
-					<figure>
-						<img src="image/resume/1.webp" alt="專案架構" title="專案架構">
-					</figure>
-
-				</ul>
-			</section>
-			<section>
-				<h2>
-					大學專題
-				</h2>
-				<ul>
-					<h3>
-						<li>以虛實整合技術探討原民文化響應學習研究(Unity VR)</li>
-					</h3>
-					<p>以虛擬實境技術（VR）結合原住民的文化，應用在這個少數文化需要被重視以及保存的時代，把文化的保存數位化，能安全並完整留存完整物品，且能推動相關的教育。</p>
-					<p>運用VR的環境來設計，能以導覽及遊戲的方式來進行學習，進而推廣出部分少數民族的文化資產。</p>
-					<p>環境中能檢視或觀察族群相關的建築結構、圖騰，陶器等文物，同時做到數位留存及教育資源的提供。</p>
-					<p>分工：本人負責提供VR專案的建議與設計。</p>
-					<figure>
-						<img src="image/thesis/1.webp" alt="執行畫面" title="執行畫面">
-						<figcaption>
-							<p>以博物館的形式展示，物件可拿取以近距離觀看。</p>
-						</figcaption>
-					</figure>
-					<a href="https://drive.google.com/file/d/1uMUVz0zD6ACFTpDj4W4bpR1d7CMcEIJS/view">影片</a>
-			</section>
-			<section>
-				<h2>其他項目</h2>
-				<ul>
-					<h3>
-						<li>
-							<a href="https://steamcommunity.com/id/maozi20017/myworkshopfiles/">steam工作坊</a>
-						</li>
-					</h3>
-					<p>用xml寫模組的漢化包，主要做的是把各個翻譯者的漢化包做個統整。</p>
-					<figure>
-						<img src="image/steam/1.webp">
-					</figure>
-				</ul>
-			</section>
-			<section>
-				<h2>附件</h2>
-				<figure>
-					<img src="image/seminar/1.webp" alt="國立台東大學資訊工程學系112級畢業專題成果展" title="國立台東大學資訊工程學系112級畢業專題成果展">
-					<img src="image/seminar/2.webp" alt="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會"
-						title="2023第19屆科技教育研究與發展學術研討會暨第12屆工程、技術與STEM教育研討會">
-				</figure>
-			</section>
-		</div>
-	</div>
-	<footer>頁尾的部分，我還不知道要放甚麼</footer>
-	</div>
-
+    <div class="container">
+        <header>
+            <h1>謝竣丞</h1>
+            <p>軟體工程師</p>
+        </header>
+        <div class="main-content">
+            <div class="column">
+                <section class="contact-info">
+                    <h2>聯絡資訊</h2>
+                    <p>電子郵件：smallg20017@gmail.com</p>
+                    <p>電話：0966557768(住的地方訊號差可能會打不通)</p>
+                    <p>地址：台中市沙鹿區正順路8號</p>
+                    <p>GitHub：github.com/maozi20017</p>
+                </section>
+                <section class="skills">
+                    <h2>技術技能</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item">Golang</li>
+                        <li class="skill-item">RESTful API</li>
+                        <li class="skill-item">MySQL</li>
+                        <li class="skill-item">PostgreSQL</li>
+                        <li class="skill-item">Docker</li>
+                        <li class="skill-item">Git</li>
+                    </ul>
+                </section>
+                <section class="languages">
+                    <h2>語言能力</h2>
+                    <ul class="language-list">
+                        <li class="language-item">中文（母語）</li>
+                        <li class="language-item">英文（基礎）</li>
+                    </ul>
+                </section>
+                <section class="education">
+                    <h2>教育背景</h2>
+                    <h3>資訊工程學士</h3>
+                    <p>國立臺東大學，2023年畢業</p>
+                </section>
+            </div>
+            <div class="column">
+                <section class="experience">
+                    <h2>工作經驗</h2>
+                    <div class="job">
+                        <h3>軟體工程師</h3>
+                        <p>中程資訊顧問有限公司，2024年5月至今</p>
+                        <ul>
+                            <li>開發和維護API，為移動應用和Web前端提供數據服務</li>
+                            <li>維護swagger文件</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="projects">
+                    <h2>項目經驗</h2>
+                    <div class="project">
+                        <h3>預算採發估驗系統後端</h3>
+                        <p>使用Golang開發營建業的預算採發估驗系統。</p>
+                        <p>使用echo,echo-swagger,xorm等框架</p>
+                        <p>資料庫使用:MSSQL</p>
+                    </div>
+                    <div class="project">
+                        <h3>Minecraft 伺服器狀態查詢</h3>
+                        <p>用 Golang 語言編寫的 Web 服務，用於查詢 Minecraft 伺服器的狀態。</p>
+                        <p>使用 Gin 框架來處理 HTTP 請求，並實現了官方的 Server List Ping (SLP) 協議來獲取伺服器資訊。</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
